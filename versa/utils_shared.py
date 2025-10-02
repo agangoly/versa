@@ -11,6 +11,7 @@ from typing import Dict, List
 
 import numpy as np
 import soundfile as sf
+import torch
 
 
 def find_files(
@@ -107,5 +108,7 @@ def default_numpy_serializer(obj):
         return float(obj)  # convert other float types (e.g. float64) -> float
     if isinstance(obj, np.ndarray):
         return obj.tolist()  # convert array -> list
+    if isinstance(obj, torch.Tensor):
+        return obj.cpu().numpy().tolist()  # convert tensor -> list
     # If not recognized, let the base class raise the TypeError
     raise TypeError(f"Object of type {type(obj)} is not JSON serializable")
