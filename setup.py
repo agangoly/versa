@@ -49,7 +49,7 @@ setup(
         "sympy",
         "threadpoolctl",
         "tokenizers",
-        "torch",
+        "torch<2.6.0",
         "torch-complex",
         "torchaudio",
         "torchlibrosa",
