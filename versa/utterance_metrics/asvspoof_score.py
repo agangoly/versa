@@ -20,7 +20,7 @@ import librosa
 import numpy as np
 import torch
 
-sys.path.append("./tools/checkpoints/aasist")
+sys.path.append("/project/versa/tools/checkpoints/aasist")
 from models.AASIST import Model as AASIST  # noqa: E402
 
 
