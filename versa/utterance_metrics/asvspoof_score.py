@@ -47,7 +47,7 @@ def deepfake_detection_model_setup(
             model.load_state_dict(torch.load(model_path, map_location=device))
     else:
         if model_tag == "default":
-            model_root = "./tools/checkpoints/aasist"
+            model_root = "/project/versa/tools/checkpoints/aasist"
             model_config = os.path.join(model_root, "config/AASIST.conf")
             model_path = os.path.join(model_root, "models/weights/AASIST.pth")
 
