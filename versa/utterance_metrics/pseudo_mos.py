@@ -29,6 +29,8 @@ except ImportError:
 def pseudo_mos_setup(
     predictor_types, predictor_args, cache_dir="versa_cache", use_gpu=False
 ):
+    if torch.cuda.is_available():
+        use_cuda = True
     # Supported predictor types: utmos, dnsmos, aecmos, plcmos
     # Predictor args: predictor specific args
     predictor_dict = {}
