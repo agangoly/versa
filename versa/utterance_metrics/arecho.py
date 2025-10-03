@@ -121,7 +121,7 @@ def arecho_metric(model, pred_x, fs):
     # Convert results to dictionary format
     if isinstance(results, dict):
         # If results is already a dictionary, use it directly
-        arecho_scores = {"arecho_" + key: value[0] for key, value in results.items()}
+        arecho_scores = {"arecho_" + key: value[0] for key, value in results.items() if not key.endswith('_feat')}
     else:
         # If results is a tensor or other format, convert to dictionary
         arecho_scores = {"arecho_score": float(results.cpu().numpy())}
