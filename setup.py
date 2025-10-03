@@ -54,7 +54,7 @@ setup(
         "torchaudio",
         "torchlibrosa",
         "s3prl @ git+https://github.com/ftshijt/s3prl.git@numpy2#egg=s3prl",
-        "transformers>=4.36.2",
+        "transformers>=4.36.2,<=4.51.2",
         "espnet_model_zoo",
         "discrete-speech-metrics @ git+https://github.com/ftshijt/DiscreteSpeechMetrics.git@v1.0.2",
         "cdpam",
