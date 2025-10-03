@@ -48,12 +48,11 @@ def universa_model_setup(model_tag="default", use_gpu=False):
 
     model_name = model_mapping[model_tag]
 
-    # Load the model
-    model = UniversaInference.from_pretrained(model_name)
-
     # Set device
-    if use_gpu and torch.cuda.is_available():
-        model = model.cuda()
+    device = "cuda" if use_gpu and torch.cuda.is_available() else "cpu"
+
+    # Load the model
+    model = UniversaInference.from_pretrained(model_name, device=device)
 
     return model
 
