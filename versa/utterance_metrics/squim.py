@@ -37,9 +37,13 @@ def squim_metric(pred_x, gt_x, fs):
     pred_x = pred_x.unsqueeze(0).float()
 
     subjective_model = SQUIM_SUBJECTIVE.get_model()
+    if torch.cuda.is_available():
+        gt_x = gt_x.cuda()
+        pred_x = pred_x.cuda()
+        subjective_model = subjective_model.cuda()
     torch_squim_mos = subjective_model(pred_x, gt_x)
 
-    return {"torch_squim_mos": torch_squim_mos.detach().numpy()[0]}
+    return {"torch_squim_mos": torch_squim_mos.cpu().detach().numpy()[0]}
 
 
 def squim_metric_no_ref(pred_x, fs):
@@ -57,12 +61,15 @@ def squim_metric_no_ref(pred_x, fs):
     pred_x = pred_x.unsqueeze(0).float()
 
     objective_model = SQUIM_OBJECTIVE.get_model()
+    if torch.cuda.is_available():
+        pred_x = pred_x.cuda()
+        objective_model = objective_model.cuda()
     torch_squim_stoi, torch_squim_pesq, torch_squim_si_sdr = objective_model(pred_x)
 
     return {
-        "torch_squim_stoi": torch_squim_stoi.detach().numpy()[0],
-        "torch_squim_pesq": torch_squim_pesq.detach().numpy()[0],
-        "torch_squim_si_sdr": torch_squim_si_sdr.detach().numpy()[0],
+        "torch_squim_stoi": torch_squim_stoi.cpu().detach().numpy()[0],
+        "torch_squim_pesq": torch_squim_pesq.cpu().detach().numpy()[0],
+        "torch_squim_si_sdr": torch_squim_si_sdr.cpu().detach().numpy()[0],
     }
 
 

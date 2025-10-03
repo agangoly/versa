@@ -117,6 +117,8 @@ def pseudo_mos_setup(
 
 
 def pseudo_mos_metric(pred, fs, predictor_dict, predictor_fs, use_gpu=False):
+    if torch.cuda.is_available():
+        use_cuda = True
     scores = {}
     for predictor in predictor_dict.keys():
         if predictor == "utmos":

@@ -74,6 +74,8 @@ class EmotionModel(Wav2Vec2PreTrainedModel):
 def w2v2_emo_dim_setup(
     model_tag="default", model_path=None, model_config=None, use_gpu=False
 ):
+    if torch.cuda.is_available():
+        use_gpu = True
     if use_gpu:
         device = "cuda"
     else:
