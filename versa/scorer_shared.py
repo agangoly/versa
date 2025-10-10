@@ -1382,6 +1382,8 @@ def list_scoring(
     score_info.extend(process_cache_info(cache_info, score_modules, f))
 
     logging.info("Scoring completed and save score at {}".format(output_file))
+    if f is not None:
+        f.close()
     return score_info
 
 
