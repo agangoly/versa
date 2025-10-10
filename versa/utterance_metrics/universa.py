@@ -143,7 +143,7 @@ def universa_metric(model, pred_x, fs, gt_x=None, ref_text=None):
     if isinstance(results, dict):
         # If results is already a dictionary, use it directly
         universa_scores = {
-            "universa_" + key: value[0][0] for key, value in results.items()
+            "universa_" + key: value[0] for key, value in results.items() if not key.endswith("_feat")
         }
     else:
         # If results is a tensor or other format, convert to dictionary
