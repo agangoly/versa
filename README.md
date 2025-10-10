@@ -1,3 +1,6 @@
+## Docker build
+`docker build -t versa .`
+
 <div align="left"><img src="assets/images/versa-light-char.png" width="550"/></div>
 
 # VERSA: Versatile Evaluation of Speech and Audio
