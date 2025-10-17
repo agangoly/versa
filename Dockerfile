@@ -30,7 +30,7 @@ RUN . ./activate_utmosv2.sh
 #COPY ./tests/resources/test.wav /project/data/input/test.wav
 #COPY ./tests/resources/config.yml /project/data/config/config.yml
 
-RUN mkdir /project/data/output
+RUN mkdir /project/data
 WORKDIR /project/data
 ## Let's download all relevant model weights
 #RUN versa-score --score_config /project/data/config/config.yml --pred /project/data/input --output_file /project/data/output/output.jsonl --io dir
